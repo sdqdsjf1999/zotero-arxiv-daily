@@ -9,7 +9,7 @@ from zotero_arxiv_daily.executor import Executor
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 dotenv.load_dotenv()
 
-@hydra.main(version_base=None, config_path="../../config", config_name="default")
+@hydra.main(version_base=None, config_path="../../../config", config_name="default")
 def main(config:DictConfig):
     # Configure loguru log level based on config
     log_level = "DEBUG" if config.executor.debug else "INFO"
