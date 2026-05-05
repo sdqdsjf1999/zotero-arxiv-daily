@@ -18,17 +18,10 @@ jobs:
 
       - name: Run script
         env:
-          ZOTERO_ID: ${{ secrets.ZOTERO_ID }}
-          ZOTERO_KEY: ${{ secrets.ZOTERO_KEY }}
-          SENDER: ${{ secrets.SENDER }}
-          RECEIVER: ${{ secrets.RECEIVER }}
-          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
-          CUSTOM_CONFIG: ${{ vars.CUSTOM_CONFIG }}
+          CUSTOM_CONFIG: ${{ secrets.CUSTOM_CONFIG }}
         run: |
           export DEBUG=true
-          printf "%b\n" "$CUSTOM_CONFIG" > config/custom.yaml
-          echo "Use custom config: "
-          cat config/custom.yaml
+          # Write provided YAML to Hydra's config/custom.yaml.
+          # IMPORTANT: do not echo the file contents (it contains secrets).
+          printf "%s" "$CUSTOM_CONFIG" > config/custom.yaml
           uv run src/zotero_arxiv_daily/main.py
