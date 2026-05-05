@@ -1,26 +1,27 @@
 zotero:
-  user_id: ${oc.env:ZOTERO_ID}
-  api_key: ${oc.env:ZOTERO_KEY}
-  include_path: null # Or set a list of glob patterns, e.g. ["2026/survey/**","2026/reading-group/**"]
+  user_id: "20414519"
+  api_key: "wnjZprYbRQwAJBUkCFhNuXYc"
+  include_path: null
 
 email:
-  sender: ${oc.env:SENDER}
-  receiver: ${oc.env:RECEIVER}
-  smtp_server: smtp.qq.com
+  sender: "18661622276@163.com"
+  receiver: "18661622276@163.com"
+  smtp_server: "smtp.163.com"
   smtp_port: 465
-  sender_password: ${oc.env:SENDER_PASSWORD}
+  sender_password: "QUUj5mWmwVmbg7TT"
 
 llm:
   api:
-    key: ${oc.env:OPENAI_API_KEY}
-    base_url: ${oc.env:OPENAI_API_BASE}
+    key: "sk-nrqiqfccplmjgrihlzafcehupqopelxbkabuvzdcnbtxnxny"
+    base_url: "https://api.siliconflow.cn/v1"
   generation_kwargs:
-    model: gpt-4o-mini
+    model: "gpt-4o-mini"
 
 source:
   arxiv:
     category: ["cs.AI","cs.CV","cs.LG","cs.CL"]
+    include_cross_list: false
 
 executor:
-  debug: ${oc.env:DEBUG,null}
-  source: ['arxiv']
+  debug: false
+  source: ["arxiv"]
